@@ -35,7 +35,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Container(
           height: 220,
           margin: EdgeInsets.only(
-              left: 5, right: 5), //faz o espaço em branco entre as imagens
+              left: 10, right: 10), //faz o espaço em branco entre as imagens
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
@@ -77,7 +77,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                      SizedBox(width: 10), //space between text
                       SmallText(text: '4.5'),
                       SizedBox(width: 10),
                       SmallText(text: '1287'),
