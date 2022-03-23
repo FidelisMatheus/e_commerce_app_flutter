@@ -31,8 +31,12 @@ class Dimensions {
 
   //icon size
   static double iconSize24 = screenHeight / 35.17;
+  static double iconSize16 = screenHeight / 52.75;
 
   //list view size - width is 390 when 390 / 120
   static double listViewImgSize = screenWidth / 3.25;
   static double listViewTextContSize = screenWidth / 3.9;
+
+  //dimensions on popular food_detail - tela 844
+  static double popularFoodImgSize = screenHeight / 2.41;
 }
