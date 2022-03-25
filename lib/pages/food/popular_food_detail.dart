@@ -1,6 +1,12 @@
 import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:e_commerce_app/widgets/app_column.dart';
 import 'package:e_commerce_app/widgets/app_icon.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/colors.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/icon_and_text_widget.dart';
+import '../../widgets/small_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({Key? key}) : super(key: key);
@@ -39,7 +45,8 @@ class PopularFoodDetail extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top: Dimensions.popularFoodImgSize,
+            bottom: 0,
+            top: Dimensions.popularFoodImgSize - 20,
             child: Container(
               padding: EdgeInsets.only(
                 left: Dimensions.width20,
@@ -47,9 +54,13 @@ class PopularFoodDetail extends StatelessWidget {
                 top: Dimensions.height20,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: Colors.grey[300],
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(Dimensions.radius20),
+                  topLeft: Radius.circular(Dimensions.radius20),
+                ),
+                color: Colors.white,
               ),
+              child: AppColumn(),
             ),
           ),
         ],
