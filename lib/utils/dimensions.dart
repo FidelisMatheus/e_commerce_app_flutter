@@ -22,7 +22,9 @@ class Dimensions {
   static double width20 = screenHeight / 42.2;
   static double width30 = screenHeight / 28.13;
 
+  //font size
   static double font20 = screenHeight / 42.2;
+  static double font26 = screenHeight / 32.46;
 
   //radius - 884 / 15
   static double radius15 = screenHeight / 56.27;
@@ -39,4 +41,7 @@ class Dimensions {
 
   //dimensions on popular food_detail - tela 844
   static double popularFoodImgSize = screenHeight / 2.41;
+
+  //bottom height 844(tela iphone - 12 / 120)
+  static double bottomHeightBar = screenHeight / 7.03;
 }
