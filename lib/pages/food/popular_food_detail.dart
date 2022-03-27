@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_column.dart';
 import 'package:e_commerce_app/widgets/app_icon.dart';
+import 'package:e_commerce_app/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/colors.dart';
@@ -17,6 +18,7 @@ class PopularFoodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          //background image
           Positioned(
             left: 0,
             right: 0,
@@ -31,6 +33,7 @@ class PopularFoodDetail extends StatelessWidget {
               ),
             ),
           ),
+          //icon widgets
           Positioned(
             top: Dimensions.height45,
             left: Dimensions.width20,
@@ -43,6 +46,7 @@ class PopularFoodDetail extends StatelessWidget {
               ],
             ),
           ),
+          //introduction of food
           Positioned(
             left: 0,
             right: 0,
@@ -67,6 +71,15 @@ class PopularFoodDetail extends StatelessWidget {
                   AppColumn(text: 'Chinese Side'),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: 'Introduce'),
+                  SizedBox(height: Dimensions.height20),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: ExpandableTextWidget(
+                          text:
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lacus a est sollicitudin dictum. Sed lacinia arcu vel gravida scelerisque. Cras tempus, dolor a sagittis tempus, velit ex semper erat, convallis rutrum nulla risus sit amet odio. In commodo nibh ex, feugiat viverra leo venenatis sed. Etiam sed rutrum ante. Integer tristique, quam nec viverra consequat, ex eros consequat neque, et pretium arcu ex vel dolor. Donec pellentesque dolor eu commodo iaculis. Pellentesque sit amet velit ac enim ultrices pellentesque a at orci. Pellentesque consectetur lorem faucibus pharetra laoreet. Aliquam non neque lectus. Mauris nec lacus tellus. Nunc id tellus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lacus a est sollicitudin dictum. Sed lacinia arcu vel gravida scelerisque. Cras tempus, dolor a sagittis tempus, velit ex semper erat, convallis rutrum nulla risus sit amet odio. In commodo nibh ex, feugiat viverra leo venenatis sed. Etiam sed rutrum ante. Integer tristique, quam nec viverra consequat, ex eros consequat neque, et pretium arcu ex vel dolor. Donec pellentesque dolor eu commodo iaculis. Pellentesque sit amet velit ac enim ultrices pellentesque a at orci. Pellentesque consectetur lorem faucibus pharetra laoreet. Aliquam non neque lectus. Mauris nec lacus tellus. Nunc id tellus ipsum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lacus a est sollicitudin dictum. Sed lacinia arcu vel gravida scelerisque. Cras tempus, dolor a sagittis tempus, velit ex semper erat, convallis rutrum nulla risus sit amet odio. In commodo nibh ex, feugiat viverra leo venenatis sed. Etiam sed rutrum ante. Integer tristique, quam nec viverra consequat, ex eros consequat neque, et pretium arcu ex vel dolor. Donec pellentesque dolor eu commodo iaculis. Pellentesque sit amet velit ac enim ultrices pellentesque a at orci. Pellentesque consectetur lorem faucibus pharetra laoreet. Aliquam non neque lectus. Mauris nec lacus tellus. Nunc id tellus ipsum.'),
+                    ),
+                  ),
+                  //kl
                 ],
               ),
             ),
