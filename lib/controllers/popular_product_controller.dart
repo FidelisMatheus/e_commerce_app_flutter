@@ -8,8 +8,8 @@ class PopularProductController extends GetxController {
   PopularProductController({required this.popularProductRepo});
 
   List<dynamic> _popularProductList = []; //This variable is private
-  List<dynamic> get popularProductList =>
-      _popularProductList; //Access the private variable
+  List<dynamic> get popularProductList => _popularProductList;
+  //Access the private variable
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
