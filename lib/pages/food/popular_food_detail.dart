@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controllers/cart_controller.dart';
 import 'package:e_commerce_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_app/models/products_model.dart';
 import 'package:e_commerce_app/pages/home/main_food_page.dart';
@@ -22,8 +23,8 @@ class PopularFoodDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<PopularProductController>().popularProductList[pageId];
-    //print('page is id ' + pageId.toString());
-    //print('product name is ' + product.name.toString());
+    Get.find<PopularProductController>()
+        .initProduct(Get.find<CartController>());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -138,7 +139,12 @@ class PopularFoodDetail extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.remove, color: AppColors.signColor),
+                      GestureDetector(
+                        onTap: () {
+                          popularProduct.setQuantity(false);
+                        },
+                        child: Icon(Icons.remove, color: AppColors.signColor),
+                      ),
                       SizedBox(width: Dimensions.width10 / 2),
                       BigText(text: popularProduct.quantity.toString()),
                       SizedBox(width: Dimensions.width10 / 2),
@@ -158,9 +164,14 @@ class PopularFoodDetail extends StatelessWidget {
                     left: Dimensions.width20,
                     right: Dimensions.width20,
                   ),
-                  child: BigText(
-                    text: '\$ ${product.price!} | Add to cart',
-                    color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () {
+                      popularProduct.addItem(product);
+                    },
+                    child: BigText(
+                      text: '\$ ${product.price!} | Add to cart',
+                      color: Colors.white,
+                    ),
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),

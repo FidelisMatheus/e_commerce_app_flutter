@@ -1,5 +1,8 @@
+import 'package:e_commerce_app/controllers/cart_controller.dart';
 import 'package:e_commerce_app/data/repository/popular_product_repo.dart';
 import 'package:e_commerce_app/models/products_model.dart';
+import 'package:e_commerce_app/utils/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PopularProductController extends GetxController {
@@ -10,12 +13,18 @@ class PopularProductController extends GetxController {
   List<dynamic> _popularProductList = []; //This variable is private
   List<dynamic> get popularProductList => _popularProductList;
   //Access the private variable
+  late CartController _cart;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
+  //var responsable for quantity of products
   int _quantity = 0;
   int get quantity => _quantity;
+
+  //var responsable for quantity of product in cart
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems + _quantity;
 
   /* o mesmo que isso aqui
    int get quantity {
@@ -27,10 +36,8 @@ class PopularProductController extends GetxController {
     Response response = await popularProductRepo.getPopularProductList();
     //successful
     if (response.statusCode == 200) {
-      print('got products');
       _popularProductList = [];
       _popularProductList.addAll(Product.fromJson(response.body).products);
-      //print(_popularProductList);
       _isLoaded = true;
       update();
     } else {}
@@ -38,10 +45,53 @@ class PopularProductController extends GetxController {
 
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
-      _quantity = _quantity + 1;
+      _quantity = checkQuantity(_quantity + 1);
     } else {
-      _quantity = _quantity - 1;
+      _quantity = checkQuantity(_quantity - 1);
     }
     update();
+  }
+
+  int checkQuantity(int quantity) {
+    if (quantity < 0) {
+      Get.snackbar(
+        "Item count",
+        "You can't reduce more !",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
+      return 0;
+    } else if (quantity > 20) {
+      Get.snackbar(
+        "Item count",
+        "You can't add more !",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
+      return 20;
+    } else {
+      return quantity;
+    }
+  }
+
+  void initProduct(CartController cart) {
+    _quantity = 0;
+    _inCartItems = 0;
+    _cart = cart;
+    //if exist
+    //get from storage _inCartItems =
+  }
+
+  void addItem(ProductModel product) {
+    if (_quantity > 0) {
+      _cart.addItem(product, _quantity);
+    } else {
+      Get.snackbar(
+        "Item count",
+        "You should at least add an item in the cart !",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
+    }
   }
 }
