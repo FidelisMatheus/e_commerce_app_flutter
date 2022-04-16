@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/models/products_model.dart';
+import 'package:e_commerce_app/pages/cart/cart_page.dart';
 import 'package:e_commerce_app/routes/route_helper.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/colors.dart';
@@ -53,8 +54,13 @@ class RecommendedFoodDetail extends StatelessWidget {
                   builder: ((controller) {
                     return Stack(
                       children: [
-                        AppIcon(
-                          icon: Icons.shopping_cart_outlined,
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => CartPage());
+                          },
+                          child: AppIcon(
+                            icon: Icons.shopping_cart_outlined,
+                          ),
                         ),
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(
