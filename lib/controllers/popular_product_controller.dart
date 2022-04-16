@@ -46,10 +46,10 @@ class PopularProductController extends GetxController {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _quantity = checkQuantity(_quantity + 1);
-      print("Increment " + _quantity.toString());
+      //print("Increment " + _quantity.toString());
     } else {
       _quantity = checkQuantity(_quantity - 1);
-      print("Decrement " + _quantity.toString());
+      //print("Decrement " + _quantity.toString());
     }
     update();
   }
@@ -62,6 +62,10 @@ class PopularProductController extends GetxController {
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
+      if (_inCartItems > 0) {
+        _quantity = -_inCartItems;
+        return _quantity;
+      }
       return 0;
     } else if ((_inCartItems + quantity) > 20) {
       Get.snackbar(
