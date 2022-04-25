@@ -17,6 +17,7 @@ class CartController extends GetxController {
   void addItem(ProductModel product, int quantity) {
     var totalQuantity = 0;
 
+    //metodo para o update do map
     if (_items.containsKey(product.id!)) {
       _items.update(product.id!, (value) {
         //old value + o new Value
@@ -30,6 +31,7 @@ class CartController extends GetxController {
           quantity: value.quantity! + quantity,
           isExist: true,
           time: DateTime.now().toString(),
+          product: product,
         );
       });
 
@@ -37,6 +39,7 @@ class CartController extends GetxController {
         _items.remove(product.id);
       }
     } else {
+      //adding new products in the map
       if (quantity > 0) {
         _items.putIfAbsent(product.id!, () {
           return CartModel(
@@ -47,6 +50,7 @@ class CartController extends GetxController {
             quantity: quantity,
             isExist: true,
             time: DateTime.now().toString(),
+            product: product,
           );
         });
       } else {
@@ -58,6 +62,8 @@ class CartController extends GetxController {
         );
       }
     }
+
+    update();
   }
 
   bool existInCart(ProductModel product) {
