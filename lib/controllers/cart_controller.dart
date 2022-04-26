@@ -100,4 +100,15 @@ class CartController extends GetxController {
       return e.value;
     }).toList();
   }
+
+  //retorna a soma dos preços no cart
+  int get totalAmount {
+    var total = 0;
+
+    _items.forEach((key, value) {
+      total += value.quantity! * value.price!;
+    });
+
+    return total;
+  }
 }
