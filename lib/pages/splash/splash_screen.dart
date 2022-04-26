@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:e_commerce_app/routes/route_helper.dart';
+import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -58,16 +59,16 @@ class _SplashScreenState extends State<SplashScreen>
             child: Center(
               child: Image.asset(
                 'assets/image/logo1.png',
-                width: 250,
+                width: Dimensions.splashImg,
               ),
             ),
           ),
-          const Center(
+          Center(
             child: Text(
               'The Best Food',
               style: TextStyle(
                 fontFamily: 'Brush Script MT',
-                fontSize: 40,
+                fontSize: Dimensions.font40,
               ),
             ),
           ),
