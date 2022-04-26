@@ -4,6 +4,7 @@ import 'package:e_commerce_app/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
 import '../pages/food/recommended_food_detail.dart';
+import '../pages/home/home_page.dart';
 
 class RouteHelper {
   static const String initial = '/';
@@ -21,7 +22,7 @@ class RouteHelper {
   static List<GetPage> routes = [
     GetPage(
       name: initial,
-      page: () => MainFoodPage(),
+      page: () => HomePage(),
     ),
     GetPage(
       name: popularFood,
